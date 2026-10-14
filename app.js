@@ -19,15 +19,24 @@ const waveShapes=[
 ];
 function setWaveMotion(){document.querySelectorAll('.wave path').forEach((path,i)=>{path.querySelectorAll('animate').forEach(a=>a.remove());path.setAttribute('d',waveShapes[0]);if(motionPreference.matches)return;const a=document.createElementNS('http://www.w3.org/2000/svg','animate');a.setAttribute('attributeName','d');a.setAttribute('values',[waveShapes[0],waveShapes[1],waveShapes[2],waveShapes[1],waveShapes[0]].join(';'));a.setAttribute('dur',(12+i%3*2)+'s');a.setAttribute('repeatCount','indefinite');a.setAttribute('calcMode','spline');a.setAttribute('keyTimes','0;0.25;0.5;0.75;1');a.setAttribute('keySplines','0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1');path.append(a);a.beginElement()})}
 setWaveMotion();motionPreference.addEventListener('change',setWaveMotion);
-const shopNav=document.querySelector('.shop-nav'),megaButton=document.querySelector('.mega-toggle'),megaPanel=document.querySelector('.mega-panel');let menuTimer;
-function setMega(open){clearTimeout(menuTimer);megaPanel.hidden=!open;megaButton.setAttribute('aria-expanded',String(open));shopNav.classList.toggle('is-open',open)}
-megaButton.addEventListener('click',()=>setMega(megaPanel.hidden));
-shopNav.addEventListener('pointerenter',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)setMega(true)});
-shopNav.addEventListener('pointerleave',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)menuTimer=setTimeout(()=>{if(!shopNav.contains(document.activeElement))setMega(false)},180)});
-shopNav.addEventListener('focusout',e=>{if(!shopNav.contains(e.relatedTarget))setMega(false)});
-shopNav.addEventListener('keydown',e=>{if(e.key==='Escape'&&!megaPanel.hidden){e.preventDefault();setMega(false);megaButton.focus()}if(e.key==='ArrowDown'&&e.target.closest('.shop-trigger')){e.preventDefault();setMega(true);megaPanel.querySelector('a').focus()}});
-document.addEventListener('click',e=>{if(!shopNav.contains(e.target))setMega(false)});
-toggle.addEventListener('click',()=>{if(toggle.getAttribute('aria-expanded')==='false')setMega(false)});
+// Shared Products / Specific Needs megamenu behaviour.
+const menuControls=[];
+document.querySelectorAll('.shop-nav').forEach(nav=>{
+ const button=nav.querySelector('.mega-toggle'),panel=nav.querySelector('.mega-panel');let timer;
+ function setOpen(open){clearTimeout(timer);if(open)menuControls.forEach(m=>{if(m.nav!==nav)m.close()});panel.hidden=!open;button.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open)}
+ menuControls.push({nav,close:()=>setOpen(false)});
+ button.addEventListener('click',()=>setOpen(panel.hidden));
+ nav.addEventListener('pointerenter',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)setOpen(true)});
+ nav.addEventListener('pointerleave',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)timer=setTimeout(()=>{if(!nav.contains(document.activeElement))setOpen(false)},180)});
+ nav.addEventListener('focusout',e=>{if(!nav.contains(e.relatedTarget))setOpen(false)});
+ nav.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){e.preventDefault();setOpen(false);button.focus()}if(e.key==='ArrowDown'&&e.target.closest('.shop-trigger')){e.preventDefault();setOpen(true);panel.querySelector('button,a').focus()}});
+ panel.addEventListener('click',e=>{if(e.target.closest('a'))setOpen(false)});
+ document.addEventListener('click',e=>{if(!nav.contains(e.target))setOpen(false)});
+ toggle.addEventListener('click',()=>{if(toggle.getAttribute('aria-expanded')==='false')setOpen(false)});
+});
+const stickyHeader=document.querySelector('header');
+function updateHeaderOffset(){document.documentElement.style.setProperty('--header-height',stickyHeader.getBoundingClientRect().height+'px')}
+updateHeaderOffset();new ResizeObserver(updateHeaderOffset).observe(stickyHeader);
 
 // Search suggestions are illustrative popular searches, not live analytics.
 const searchForm=document.querySelector('.search'),searchInput=document.querySelector('#search'),suggestions=document.querySelector('#popular-searches');

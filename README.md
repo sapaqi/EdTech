@@ -1,6 +1,6 @@
 # Edtech — homepage redesign
 
-Aktualna wersja v14, 14 października 2026.
+Aktualna wersja v15, 14 października 2026.
 Statyczna strona HTML/CSS/JavaScript. Nie wymaga npm ani kompilacji.
 
 ## Pliki
@@ -30,3 +30,5 @@ V12: statystyki bez kart; jednolite tła FAQ #EFF8F5.
 V13: poprawiony kształt SVG łezek w Key stats oraz delikatna animacja.
 
 V14: Book demo jako primary CTA, My account jako secondary oraz ciemna sekcja Specific Needs po Featured Products. Book demo prowadzi do kontaktu; kategorie potrzeb prowadzą do wyszukiwania produktów.
+
+V15: sticky header, megamenu Specific Needs, Book a demo w głównym menu, Quick links przed Legal links, animowana fala nad sekcją rozwiązań.
