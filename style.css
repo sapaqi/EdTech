@@ -83,3 +83,4 @@
 
 /* Stats and FAQ cards: unified background. */
 .stat-card,.stat-card:nth-child(2),.stat-card:nth-child(3),.faq-card,.faq-card:nth-child(3n+2),.faq-card:nth-child(3n){background:#EFF8F5;border-color:#c6e7dd}
+.stat-card:nth-child(2) strong,.stat-card:nth-child(3) strong{color:#08776f}
