@@ -85,3 +85,12 @@
 .faq-card,.faq-card:nth-child(3n+2),.faq-card:nth-child(3n){background:#eff8f5;border-color:#dce8e4}
 @media(max-width:800px){.key-stats{padding-top:55px}.stat-card,.stat-card:nth-child(2),.stat-card:nth-child(3){padding:0 24px}.stat-card:first-child{padding-left:0}.stat-card:last-child{padding-right:0}.stat-card strong,.stat-card:nth-child(2) strong,.stat-card:nth-child(3) strong{font-size:68px}.stat-card h3{font-size:18px}.stat-card p{font-size:13px}}
 @media(max-width:560px){.key-stats{padding-top:46px}.key-stats .section-heading{flex-direction:row;gap:14px;margin-bottom:12px}.key-stats h2{font-size:28px}.stats-accent{gap:8px;margin:0}.stats-grid{grid-template-columns:1fr}.stat-card,.stat-card:nth-child(2),.stat-card:nth-child(3),.stat-card:first-child,.stat-card:last-child{padding:25px 0;border-left:0;display:grid;grid-template-columns:90px 1fr;column-gap:20px}.stat-card+.stat-card{border-top:1px solid #dce8e4}.stat-card strong,.stat-card:nth-child(2) strong,.stat-card:nth-child(3) strong{font-size:64px;grid-row:1/3;margin:0;align-self:center}.stat-card h3{align-self:end;margin:0 0 7px}.stat-card p{max-width:none}}
+
+/* Use the shared brand silhouette and slow, staggered drift. */
+.key-stats .stats-accent{display:block;position:relative;flex:0 0 92px;width:92px;height:76px;margin:0 12px 0 0;transform:none}
+.key-stats .stats-accent .droplet{height:auto;transform-origin:center;animation:brand-drift 11s ease-in-out infinite}
+.key-stats .stats-accent .d1{width:36px;left:4px;top:7px;right:auto;bottom:auto;fill:var(--yellow);transform:rotate(32deg);animation-delay:-2s}
+.key-stats .stats-accent .d2{width:25px;left:57px;top:35px;right:auto;bottom:auto;fill:var(--orange);transform:rotate(-48deg);animation-duration:13s;animation-delay:-6s}
+.key-stats .stats-accent .d3{width:17px;left:22px;top:53px;right:auto;bottom:auto;fill:var(--teal);transform:rotate(78deg);animation-duration:10s;animation-delay:-4s}
+@media(max-width:560px){.key-stats .stats-accent{flex-basis:76px;width:76px;margin-right:0}.key-stats .stats-accent .d1{width:30px}.key-stats .stats-accent .d2{width:22px;left:48px}.key-stats .stats-accent .d3{width:15px;left:18px}}
+@media(prefers-reduced-motion:reduce){.key-stats .stats-accent .droplet{animation:none!important}}

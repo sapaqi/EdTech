@@ -1,6 +1,6 @@
 # Edtech — homepage redesign
 
-Aktualna wersja v12, 14 października 2026.
+Aktualna wersja v13, 14 października 2026.
 Statyczna strona HTML/CSS/JavaScript. Nie wymaga npm ani kompilacji.
 
 ## Pliki
@@ -26,3 +26,5 @@ Linki nowych kategorii uruchamiają wyszukiwanie produktu w obecnym sklepie.
 Przed wdrożeniem produkcyjnym należy dopasować docelowe adresy do routingu sklepu/CMS.
 
 V12: statystyki bez kart; jednolite tła FAQ #EFF8F5.
+
+V13: poprawiony kształt SVG łezek w Key stats oraz delikatna animacja.
