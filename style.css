@@ -80,3 +80,6 @@
 .product-body h3{min-height:35px}.product .price{margin-top:5.5px}
 @media(max-width:800px) and (min-width:561px){.product-body h3{min-height:0}}
 @media(max-width:560px){.product-body h3{min-height:29px}.product .price{margin-top:6px}}
+
+/* Stats and FAQ cards: unified background. */
+.stat-card,.stat-card:nth-child(2),.stat-card:nth-child(3),.faq-card,.faq-card:nth-child(3n+2),.faq-card:nth-child(3n){background:#EFF8F5}
