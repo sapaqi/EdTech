@@ -1,6 +1,6 @@
 # Edtech — homepage redesign
 
-Aktualna wersja v11, 14 października 2026.
+Aktualna wersja v12, 14 października 2026.
 Statyczna strona HTML/CSS/JavaScript. Nie wymaga npm ani kompilacji.
 
 ## Pliki
@@ -24,3 +24,5 @@ Podpowiedzi popularnych wyszukiwań są przykładowe. Treści FAQ wymagają akce
 Key stats: 4 grupy odbiorców, 24 kategorie Hardware, 21 kategorii Software.
 Linki nowych kategorii uruchamiają wyszukiwanie produktu w obecnym sklepie.
 Przed wdrożeniem produkcyjnym należy dopasować docelowe adresy do routingu sklepu/CMS.
+
+V12: statystyki bez kart; jednolite tła FAQ #EFF8F5.
