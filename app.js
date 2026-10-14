@@ -28,3 +28,13 @@ shopNav.addEventListener('focusout',e=>{if(!shopNav.contains(e.relatedTarget))se
 shopNav.addEventListener('keydown',e=>{if(e.key==='Escape'&&!megaPanel.hidden){e.preventDefault();setMega(false);megaButton.focus()}if(e.key==='ArrowDown'&&e.target.closest('.shop-trigger')){e.preventDefault();setMega(true);megaPanel.querySelector('a').focus()}});
 document.addEventListener('click',e=>{if(!shopNav.contains(e.target))setMega(false)});
 toggle.addEventListener('click',()=>{if(toggle.getAttribute('aria-expanded')==='false')setMega(false)});
+
+// Search suggestions are illustrative popular searches, not live analytics.
+const searchForm=document.querySelector('.search'),searchInput=document.querySelector('#search'),suggestions=document.querySelector('#popular-searches');
+function setSuggestions(open){suggestions.hidden=!open;searchInput.setAttribute('aria-expanded',String(open))}
+searchInput.addEventListener('focus',()=>setSuggestions(true));
+searchInput.addEventListener('input',()=>setSuggestions(true));
+searchForm.addEventListener('focusout',e=>{if(!searchForm.contains(e.relatedTarget))setSuggestions(false)});
+document.addEventListener('click',e=>{if(!searchForm.contains(e.target))setSuggestions(false)});
+searchForm.addEventListener('keydown',e=>{if(e.key==='Escape'){setSuggestions(false);searchInput.focus()}if(e.key==='ArrowDown'&&e.target===searchInput){e.preventDefault();setSuggestions(true);suggestions.querySelector('a').focus()}});
+document.querySelectorAll('[data-catalog]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-catalog]').forEach(b=>{const selected=b===button;b.classList.toggle('selected',selected);b.setAttribute('aria-expanded',String(selected));document.querySelector('#catalog-'+b.dataset.catalog).hidden=!selected})}));
