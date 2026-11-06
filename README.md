@@ -1,8 +1,9 @@
-# EdTech demo v21
+# EdTech demo v26
 
-Extract this ZIP into the root of the repository. In **Settings → Pages**, select **Deploy from a branch**, choose your branch (e.g. main) and **/ (root)**, then save.
+Extract the ZIP into the repository root. In GitHub, select Settings → Pages → Deploy from a branch, then choose your branch (e.g. main) and / (root). No build step is required.
 
-- `index.html` — homepage
-- `products.html` — product listing
+- index.html — homepage
+- products.html — product listing
+- dragon-pro-v16.html — Dragon Pro V16 product details
 
-Keep the HTML, CSS, JavaScript and assets together. The demo is static and requires no build step.
+Keep the HTML, CSS, JavaScript and assets together.

@@ -33,7 +33,7 @@ function update(){
  });
  document.querySelector('#result-count').textContent=count+' product'+(count===1?'':'s');document.querySelector('.no-results').hidden=count!==0;document.querySelector('.collection-end').hidden=count===0;
  const active=document.querySelector('#active-filters');active.replaceChildren();
- applied.forEach(c=>{const label=c.nextElementSibling.textContent;const b=document.createElement('button');b.type='button';b.textContent=label+' ×';b.setAttribute('aria-label','Remove '+label+' filter');b.onclick=()=>{c.checked=false;applied=applied.filter(item=>item!==c);update()};active.append(b)});
+ applied.forEach(c=>{const label=c.nextElementSibling.textContent;const b=document.createElement('button');b.type='button';b.textContent=label+' ';b.insertAdjacentHTML('beforeend','<svg class="ui-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 6-12 12M6 6l12 12"/></svg>');b.setAttribute('aria-label','Remove '+label+' filter');b.onclick=()=>{c.checked=false;applied=applied.filter(item=>item!==c);update()};active.append(b)});
 }
 form.addEventListener('submit',e=>{e.preventDefault();apply();if(filterToggle.getAttribute('aria-expanded')==='true'){setFiltersOpen(false);filterToggle.focus()}});
 sort.addEventListener('change',update);

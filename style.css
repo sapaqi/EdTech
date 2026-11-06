@@ -188,3 +188,12 @@ a[aria-disabled="true"]{cursor:default}a[aria-disabled="true"]:hover{color:#118d
 /* Preserve the two matching links and circular amounts from Navigation v4. */
 .nav-tools .cart-preview .cart-label{display:block;font:inherit}
 .nav-tools .cart-preview .cart-amount{display:grid;inline-size:1.9375rem;block-size:1.9375rem;padding:0;border-radius:50%;line-height:1}
+
+/* Inline SVGs keep icon shapes consistent across browsers and fonts. */
+.ui-icon{display:inline-block;width:1em;height:1em;vertical-align:-.12em;flex:none}
+.button .ui-icon,.text-link .ui-icon,.needs-arrow .ui-icon{width:1.05em;height:1.05em}
+.rating .ui-icon{margin-right:.16em}
+.category.teal .category-icon{color:#fff}
+.category-icon .ui-icon{width:1.8125rem;height:1.8125rem}
+.primary:not(:hover):not(:active){box-shadow:0 .3125rem 0 #064e48}
+.product-button:not(:hover):not(:active){box-shadow:0 .25rem 0 #064e48}

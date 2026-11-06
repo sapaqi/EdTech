@@ -3,8 +3,8 @@
 @media(max-width:760px){.listing-layout{display:flex;flex-direction:column}.filters{display:none;background:#f7faf9;padding:1.4rem;border:1px solid #dce8e4;border-radius:1rem}.filters.is-open{display:block}.filter-toggle{display:flex;gap:.6rem;align-items:center;border:1px solid #849e95;background:white;border-radius:.6rem;padding:.6rem .8rem;color:#163e3b;font-size:.875rem}.results-toolbar{flex-wrap:wrap}.results-toolbar>div{flex:1}.results-toolbar label{order:3;width:100%;justify-content:space-between}.results-toolbar label select{flex:1;max-width:15rem}.catalog-support>.container{grid-template-columns:1fr;gap:1.5rem}.catalog-support h2{font-size:2.2rem}}
 @media(max-width:480px){.listing-products{gap:.8rem}.listing-products .product-visual{height:10.5rem}.listing-products .product-visual img,.listing-products .product:first-child .product-visual img{height:6.4rem;width:80%}.listing-products .tag{font-size:.625rem;left:.5rem;top:.5rem;padding:.25rem .4rem}.listing-products .product-body{padding:.8rem}.listing-products h3{font-size:1.0625rem;min-height:3.45em}.listing-products .product-type{font-size:.75rem;min-height:3em}.listing-products .price{font-size:.875rem;min-height:2.8em;margin:.4rem 0 .8rem}.listing-products .product-button{font-size:.75rem;gap:.25rem;padding:.6rem}.listing-products .quote-add{font-size:.75rem}.catalog-shell{padding-top:1.6rem}.catalog-support h2{font-size:2rem}}
 
-.catalog-intro{background:linear-gradient(105deg,#eff8f5 28%,#f5f9ee 66%,#fff2cb 100%);position:relative;overflow:hidden;padding:1.45rem 0 1.8rem;border-bottom:1px solid #dce8e4}
-.catalog-intro .breadcrumbs{margin-bottom:.8rem}
+.catalog-intro{background:linear-gradient(105deg,#eff8f5 28%,#f5f9ee 66%,#fff2cb 100%);position:relative;overflow:hidden;min-height:9.5rem;display:grid;align-items:center;padding:1.5rem 0;border-bottom:1px solid #dce8e4}
+.catalog-intro .breadcrumbs{margin-bottom:.8rem;flex-wrap:wrap;max-width:76%;row-gap:.25rem}
 .catalog-intro-line{display:grid;gap:.45rem;max-width:75%}
 .catalog-intro-line h1{font-size:2rem;letter-spacing:-.06rem}
 .catalog-intro-line p{font-size:1rem;color:#455d57}
@@ -15,8 +15,8 @@
 .category-filter-row>label{padding-right:2rem!important}
 .category-filter-row summary{position:absolute;top:0;right:0;width:2rem;height:2rem;display:grid;place-items:center;cursor:pointer;list-style:none;border-radius:.45rem;color:#08776f}
 .category-filter-row summary::-webkit-details-marker{display:none}
-.category-filter-row summary::after{content:'+';font-size:1.1rem;font-weight:900}
-.category-filter-row details[open] summary::after{content:'−'}
+.category-filter-row summary .ui-icon{width:1rem;height:1rem}
+.category-filter-row details[open] summary .expand-vertical{display:none}
 .category-filter-row summary:hover{background:#eff8f5}
 .filter-subcategories{margin:.15rem 0 .65rem .6rem;padding-left:.65rem;border-left:2px solid #dce8e4}
 .filter-subcategories label{font-size:.875rem}
@@ -24,15 +24,15 @@
 .filter-actions .button{font-size:.875rem;min-height:2.75rem;padding:.6rem 1rem;text-decoration:none}
 @media(max-width:48rem){.catalog-intro-line h1{font-size:1.65rem}.catalog-intro-line p{font-size:.9375rem}}
 
-.catalog-intro-drops{position:absolute;right:max(7%,calc((100% - 76rem)/2));top:29%;height:45%;aspect-ratio:1.85;pointer-events:none}
+.catalog-intro-drops{position:absolute;right:max(7%,calc((100% - 76rem)/2));top:50%;transform:translateY(-50%);height:4.275rem;aspect-ratio:1.85;pointer-events:none}
 .intro-drop{position:absolute;height:auto;animation:catalog-drop-drift 7s ease-in-out infinite}
 .intro-drop:nth-child(1){width:49%;top:28%;left:5%;fill:#ed842a;rotate:-24deg}
 .intro-drop:nth-child(2){width:35%;top:0;right:6%;fill:#f8c540;rotate:-73deg;animation-delay:-2s}
 .intro-drop:nth-child(3){width:23%;bottom:0;right:18%;fill:#08776f;rotate:89deg;animation-delay:-4s}
 @keyframes catalog-drop-drift{0%,100%{translate:0 0}50%{translate:.18rem -.35rem}}
 @media(max-width:48rem){
- .catalog-intro{padding:1.15rem 0 1.4rem}
- .catalog-intro-drops{right:5%;height:34%;top:30%}
+ .catalog-intro{min-height:8rem;padding:1.25rem 0}
+ .catalog-intro-drops{right:5%;height:3rem}
  .catalog-intro-line{max-width:76%}
 }
 @media(prefers-reduced-motion:reduce){.intro-drop{animation:none}}
