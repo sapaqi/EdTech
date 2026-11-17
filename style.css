@@ -197,3 +197,41 @@ a[aria-disabled="true"]{cursor:default}a[aria-disabled="true"]:hover{color:#118d
 .category-icon .ui-icon{width:1.8125rem;height:1.8125rem}
 .primary:not(:hover):not(:active){box-shadow:0 .3125rem 0 #064e48}
 .product-button:not(:hover):not(:active){box-shadow:0 .25rem 0 #064e48}
+
+/* Shared dropdown colours and phone navigation. */
+.nav-row .mega-panel,.search-suggestions{background:#fff;color:#163e3b}
+.catalog-tabs{background:#edf7f3}
+.nav-row .catalog-tabs button.selected{background:#d4eee5;color:#163e3b;box-shadow:inset 0 0 0 1px #82b8ab}
+.nav-row .catalog-tabs button:not(.selected):hover{background:#e0f0eb;color:#163e3b}
+.nav-row .mega-panel a:not(.button),.nav-row .mega-panel a[aria-disabled="true"]:hover{color:#163e3b}
+.nav-row .mega-panel .mega-bottom{background:#f2f8f6}
+.nav-row .mega-panel .mega-bottom a,.nav-row .mega-panel .mega-help>a{color:#08776f}
+.nav-row .mega-panel a:not(.button):hover,.nav-row .mega-panel a:not(.button):focus-visible,.search-suggestions a:hover{background:#edf7f3}
+@media(max-width:39rem){
+ .header-top,.header-top.open{min-height:5.5rem;padding-block:1rem;gap:.5rem}
+ .header-top .logo{width:clamp(7.75rem,41vw,10rem);min-width:0;flex:0 1 auto}
+ .header-top .menu-toggle{display:grid;place-items:center;flex:0 0 2.75rem;min-height:2.75rem;background:#edf7f3;border-radius:.625rem}
+ .header-actions .account.button{min-height:2.75rem;padding-inline:.65rem;font-size:.8125rem}
+ .header-top:not(.open) .search,.nav-row:not(.open) > nav,.nav-row:not(.open) .nav-tools{display:none}
+ .header-top.open .search{display:flex;flex:0 0 100%}
+ .nav-row{display:block;position:static;min-height:0}
+ .nav-row.open > nav{display:flex;flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:.25rem;padding:.625rem 0}
+ .nav-row.open{max-height:calc(100dvh - 9.75rem);overflow-y:auto;overscroll-behavior:contain}
+ .nav-row .shop-nav,.nav-row .shop-trigger{width:100%}
+ .nav-row .shop-trigger{justify-content:space-between}
+ .nav-row .mega-toggle{min-width:2.75rem;min-height:2.75rem;background:#edf7f3;padding:.625rem}
+ .nav-row .mega-panel{position:static;max-height:none;overflow:visible;box-shadow:none;border:1px solid #dce9e2;border-radius:.8125rem;margin:.4375rem 0 .75rem;animation:none}
+ .nav-row .nav-tools{position:static;margin:0;padding:.5rem 0 .75rem;justify-content:flex-start;gap:1.25rem}
+ .nav-row > nav > a,.nav-row .shop-trigger>a{display:flex;align-items:center;min-height:2.75rem;font-size:1.0625rem;line-height:1.4}
+ .nav-row nav .mega-panel a,.nav-row .catalog-tabs button,.search-suggestions a{min-height:2.75rem;font-size:1rem;line-height:1.45}
+ .nav-row nav .mega-panel .catalog-links a,.nav-row nav .mega-panel .mega-nested summary{min-height:2.75rem;font-size:1rem!important;line-height:1.45!important}
+ .nav-row nav .mega-panel .mega-bottom a,.nav-row nav .nav-demo{font-size:1rem}
+ .nav-row nav .nav-demo{align-self:flex-start}
+ .catalog-menu{display:block;min-height:0;max-height:none;overflow:visible}
+ .catalog-tabs{display:flex;flex-wrap:wrap;flex-direction:row;gap:.5rem}
+ .catalog-content{padding:1rem}
+ .catalog-links{columns:1}
+ .needs-mega-layout,.mega-bottom{padding:1rem}
+ .needs-mega-links{grid-template-columns:1fr}
+ .search-suggestions{max-height:min(23rem,55dvh);overflow:auto}
+}

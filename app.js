@@ -28,8 +28,8 @@ document.querySelectorAll('.shop-nav').forEach(nav=>{
  function setOpen(open){clearTimeout(timer);if(open)menuControls.forEach(m=>{if(m.nav!==nav)m.close()});panel.hidden=!open;button.setAttribute('aria-expanded',String(open));nav.classList.toggle('is-open',open)}
  menuControls.push({nav,close:()=>setOpen(false)});
  button.addEventListener('click',()=>setOpen(panel.hidden));
- nav.addEventListener('pointerenter',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)setOpen(true)});
- nav.addEventListener('pointerleave',()=>{if(matchMedia('(hover:hover) and (min-width:561px)').matches)timer=setTimeout(()=>{if(!nav.contains(document.activeElement))setOpen(false)},180)});
+ nav.addEventListener('pointerenter',()=>{if(matchMedia('(hover:hover) and (width > 39rem)').matches)setOpen(true)});
+ nav.addEventListener('pointerleave',()=>{if(matchMedia('(hover:hover) and (width > 39rem)').matches)timer=setTimeout(()=>{if(!nav.contains(document.activeElement))setOpen(false)},180)});
  nav.addEventListener('focusout',e=>{if(!nav.contains(e.relatedTarget))setOpen(false)});
  nav.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){e.preventDefault();setOpen(false);button.focus()}if(e.key==='ArrowDown'&&e.target.closest('.shop-trigger')){e.preventDefault();setOpen(true);panel.querySelector('button,a').focus()}});
  panel.addEventListener('click',e=>{if(e.target.closest('a'))setOpen(false)});
