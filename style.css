@@ -235,3 +235,57 @@ a[aria-disabled="true"]{cursor:default}a[aria-disabled="true"]:hover{color:#118d
  .needs-mega-links{grid-template-columns:1fr}
  .search-suggestions{max-height:min(23rem,55dvh);overflow:auto}
 }
+
+/* Consistent press motion for every raised CTA, including account access. */
+.button:not(:disabled):hover,.button:not(:disabled):focus-visible{
+ transform:translateY(.2rem);box-shadow:none;
+}
+.button:not(:disabled):active{transform:translateY(.25rem);box-shadow:none}
+.hero-sprinkles .d1{scale:-1 1;transform:rotate(135deg)}
+.key-stats{padding-bottom:5.625rem}
+.key-stats .stat-card{transition:color .2s}
+.key-stats a.stat-card:hover h3,.key-stats a.stat-card:focus-visible h3{color:#08776f;text-decoration:underline;text-underline-offset:.2em}
+@media(max-width:50rem){.key-stats{padding-bottom:4rem}}
+@media(max-width:35rem){.key-stats{padding-bottom:3.3125rem}}
+
+/* Original classroom photo: clear people on the left, soft copy area on the right. */
+.hero-photo{background-image:url(assets/hero-coding-classroom.jpg);background-size:auto 100%;background-repeat:no-repeat;background-position:left center;background-color:#f3f9f6}
+.hero-photo::before{content:"";position:absolute;inset:0;background:inherit;filter:blur(12px);mask-image:linear-gradient(90deg,transparent 36%,#000 64%);-webkit-mask-image:linear-gradient(90deg,transparent 36%,#000 64%)}
+.hero-photo::after{background:linear-gradient(90deg,transparent 32%,rgba(243,249,246,.04) 39%,rgba(243,249,246,.36) 49%,rgba(243,249,246,.87) 59%,rgba(243,249,246,.97) 69%,#f3f9f6 80%)}
+@media(min-width:1921px){.hero-photo{background-size:auto 100%;background-position:left center}}
+@media(min-width:761px) and (max-width:1100px){.hero-photo{background-position:left center}.hero-photo::after{background:linear-gradient(90deg,transparent 35%,rgba(243,249,246,.12) 44%,rgba(243,249,246,.88) 59%,#f3f9f6 78%)}}
+@media(max-width:760px){
+ .hero-photo{height:clamp(260px,49vw,370px);background-size:auto 100%;background-position:left center}
+ .hero-photo::before{display:none}
+ .hero-photo::after{background:linear-gradient(180deg,transparent 72%,rgba(243,249,246,.3) 85%,#f3f9f6 100%)}
+}
+
+/* Pressable shortcuts and audience cards share the raised CTA behaviour. */
+.quick{--card-shadow:#9e4a12}
+.quick.yellow{--card-shadow:#b58a18}
+.quick.teal{--card-shadow:#064e48}
+.category{--card-shadow:#9dc2b6;border-bottom-width:1px}
+.category.yellow{--card-shadow:#d1b665}
+.category.orange{--card-shadow:#d3996e}
+.category.mint{--card-shadow:#9bb583}
+.quick,.category{box-shadow:0 .3125rem 0 var(--card-shadow);transition:transform .2s,box-shadow .2s}
+.quick:hover,.quick:focus-visible,.category:hover,.category:focus-visible,
+.js-motion .quick.visible:hover,.js-motion .category.visible:hover,
+.js-motion .quick.visible:focus-visible,.js-motion .category.visible:focus-visible{
+ transform:translateY(.3125rem);box-shadow:none;
+}
+
+/* Mirrored, rotated top-right hero teardrop; float motion stays independent. */
+.hero-drop.one{transform:rotate(115deg) scaleX(-1)}
+
+/* A faint, blurred continuation of the classroom under the desktop hero copy. */
+@media(min-width:761px){
+ .hero-photo::before{background-image:url(assets/hero-coding-classroom.jpg);background-size:cover;background-position:right center;background-repeat:no-repeat;filter:blur(20px);mask-image:linear-gradient(90deg,transparent 38%,#000 62%);-webkit-mask-image:linear-gradient(90deg,transparent 38%,#000 62%)}
+ .hero-photo::after{background:linear-gradient(90deg,transparent 32%,rgba(243,249,246,.04) 39%,rgba(243,249,246,.36) 49%,rgba(243,249,246,.87) 59%,rgba(243,249,246,.92) 69%,rgba(243,249,246,.90) 100%)}
+}
+
+/* Extended classroom photography reaches the full hero width beneath the copy. */
+@media(min-width:761px){
+ .hero-photo::before{background-image:url(assets/hero-classroom-panorama-v2.jpg);background-size:cover;background-position:left center;filter:blur(16px);mask-image:linear-gradient(90deg,transparent 32%,#000 56%);-webkit-mask-image:linear-gradient(90deg,transparent 32%,#000 56%)}
+ .hero-photo::after{background:linear-gradient(90deg,transparent 32%,rgba(243,249,246,.04) 39%,rgba(243,249,246,.36) 49%,rgba(243,249,246,.82) 59%,rgba(243,249,246,.82) 69%,rgba(243,249,246,.76) 100%)}
+}

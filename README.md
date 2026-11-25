@@ -1,9 +1,13 @@
-# EdTech demo v26
+# EdTech demo — v46
 
-Extract the ZIP into the repository root. In GitHub, select Settings → Pages → Deploy from a branch, then choose your branch (e.g. main) and / (root). No build step is required.
+Upload the contents of this archive to the root of your GitHub repository.
+No build step is needed. GitHub Pages: deploy from your branch, folder / (root).
 
+Pages:
 - index.html — homepage
+- index2.html — alternative homepage (mobile logo without tagline)
 - products.html — product listing
-- dragon-pro-v16.html — Dragon Pro V16 product details
+- dragon-pro-v16.html — product details
 
-Keep the HTML, CSS, JavaScript and assets together.
+Keep the assets folder, stylesheets and JavaScript alongside the HTML files.
+This package includes the latest full-width classroom background and all previous updates.

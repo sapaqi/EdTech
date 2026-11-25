@@ -14,12 +14,37 @@ document.querySelector('#copy-quote').onclick=async()=>{try{await navigator.clip
 
 // Animate the separator geometry without moving the section or its contents.
 const motionPreference=matchMedia('(prefers-reduced-motion: reduce)');
-const waveShapes=[
-'M0 31 C120 -12 240 74 360 31 C480 -12 600 74 720 31 C840 -12 960 74 1080 31 C1200 -12 1320 74 1440 31 V66 H0 Z',
-'M0 31 C120 13 240 48 360 31 C480 13 600 48 720 31 C840 13 960 48 1080 31 C1200 13 1320 48 1440 31 V66 H0 Z',
-'M0 31 C120 62 240 0 360 31 C480 62 600 0 720 31 C840 62 960 0 1080 31 C1200 62 1320 0 1440 31 V66 H0 Z'
-];
-function setWaveMotion(){document.querySelectorAll('.wave path').forEach((path,i)=>{path.querySelectorAll('animate').forEach(a=>a.remove());path.setAttribute('d',waveShapes[0]);if(motionPreference.matches)return;const a=document.createElementNS('http://www.w3.org/2000/svg','animate');a.setAttribute('attributeName','d');a.setAttribute('values',[waveShapes[0],waveShapes[1],waveShapes[2],waveShapes[1],waveShapes[0]].join(';'));a.setAttribute('dur',(12+i%3*2)+'s');a.setAttribute('repeatCount','indefinite');a.setAttribute('calcMode','spline');a.setAttribute('keyTimes','0;0.25;0.5;0.75;1');a.setAttribute('keySplines','0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1');path.append(a);a.beginElement()})}
+// Smooth continuous shape motion, evaluated every frame without easing holds.
+let waveFrame;
+function setWaveMotion(){
+ cancelAnimationFrame(waveFrame);
+ const paths=[...document.querySelectorAll('.wave path')];
+ paths.forEach(path=>{path.querySelectorAll('animate,animateTransform').forEach(a=>a.remove());path.removeAttribute('transform')});
+ function draw(time){
+  const phase=time*(1-0.33)/8000*Math.PI*2;
+  paths.forEach((path,index)=>{
+   // Four stationary sine periods; only their height changes over time.
+   // Matching endpoint slopes keep every join smooth.
+   const width=1440, wavelength=360, step=22.5;
+   const localPhase=phase+index*Math.PI*(3-Math.sqrt(5));
+   const amplitude=14+6*Math.sin(localPhase);
+   const baseline=31+2*Math.cos(localPhase);
+   const frequency=2*Math.PI/wavelength;
+   const y=x=>baseline+amplitude*Math.sin(frequency*x);
+   const slope=x=>amplitude*frequency*Math.cos(frequency*x);
+   let d='M0 '+y(0).toFixed(3);
+   for(let x=0;x<width;x+=step){
+    const end=x+step;
+    d+=' C'+(x+step/3)+' '+(y(x)+slope(x)*step/3).toFixed(3)
+      +' '+(end-step/3)+' '+(y(end)-slope(end)*step/3).toFixed(3)
+      +' '+end+' '+y(end).toFixed(3);
+   }
+   path.setAttribute('d',d+' V66 H0 Z');
+  });
+  if(!motionPreference.matches)waveFrame=requestAnimationFrame(draw);
+ }
+ draw(motionPreference.matches?0:performance.now());
+}
 setWaveMotion();motionPreference.addEventListener('change',setWaveMotion);
 // Shared Products / Specific Needs megamenu behaviour.
 const menuControls=[];
